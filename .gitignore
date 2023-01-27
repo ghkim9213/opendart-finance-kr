@@ -1,0 +1,10 @@
+db.sqlite3
+manage.py
+uwsgi.ini
+
+.secrets
+.env
+.ssh
+
+*__pycache__*
+*migrations*
