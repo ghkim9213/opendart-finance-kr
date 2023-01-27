@@ -14,7 +14,7 @@ import pandas as pd
 
 class Readme(APIView):
     def get(self, request, format=None):
-        with open('./readme.md') as f:
+        with open('./README.md') as f:
             return Response(f.read())
 
 class ApiDoc(APIView):
