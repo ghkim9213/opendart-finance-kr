@@ -58,7 +58,8 @@ MIDDLEWARE = [
 
 FRONTEND_BASE_URL = read_env('FRONTEND_BASE_URL')
 CORS_ALLOWED_ORIGINS = [
-    FRONTEND_BASE_URL,
+    'http://www.opendata-finance-kr.com',
+    DEV_FRONTEND_BASE_URL,
 ]
 
 ROOT_URLCONF = 'config.urls'
