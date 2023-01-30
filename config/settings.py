@@ -19,7 +19,11 @@ SECRET_KEY = read_secret('BACKEND_SECRET_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = [
+    'localhost',
+    '13.125.166.128',
+    'apis.opendata-finance-kr.com',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
