@@ -3,7 +3,7 @@
 opendata-finance-kr은 국내 자본시장 관련 공공데이터로부터 자주 활용되는 주요 데이터를 선별, 추출 및 산출하여 재배포하는 오픈데이터 프로젝트로,
 자본시장 관련 데이터 수집 및 전처리로부터 발생하는 시간과 비용을 줄이는 데 도움이 되고자 기획되었습니다.
 
-- [web](http://www.opendart-finance-kr.com)
+- [web](http://www.opendata-finance-kr.com)
 - [github](https://github.com/ghkim9213/opendata-finance-kr)
 
 ---
