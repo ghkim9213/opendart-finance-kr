@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "공공데이터를 바탕으로 산출한 국내 자본시장 관련 주요지표 데이터를 제공합니다.",
+    "description": "opendata-finance-kr의 open API 서비스입니다.",
     "version": "0.0.1",
     "title": "opendata-finance-kr",
     "termsOfService": "http://terms.of.service.io",
@@ -9,19 +9,19 @@
       "email": "gkim9213@gmail.com"
     },
     "license" : {
-      "name": "Apache 2.0",
+      "name": "License",
       "url": "http://license.io"
     }
   },
-  "host": "localhost:8000",
-  "basePath": "/api",
+  "host": "apis.opendata-finance-kr.com",
+  "basePath": "/",
   "tags": [
     {
       "name": "variable",
       "description": "월별 (분기별) 변수 데이터",
       "externalDocs": {
         "description": "데이터셋 다운로드",
-        "url": "http://localhost:3000/datasets/"
+        "url": "http://www.opendata-finance-kr.com/datasets/"
       }
     },
     {
@@ -29,7 +29,7 @@
       "description": "요인 포트폴리오 구성정보 및 수익률 데이터 조회",
       "externalDocs": {
         "description": "데이터셋 다운로드",
-        "url": "http://localhost:3000/datasets/"
+        "url": "http://www.opendata-finance-kr.com/datasets/"
       }
     }
   ],
