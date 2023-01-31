@@ -60,6 +60,7 @@ DEV_FRONTEND_BASE_URL = read_env('DEV_FRONTEND_BASE_URL')
 CORS_ALLOWED_ORIGINS = [
     'http://www.opendata-finance-kr.com',
     DEV_FRONTEND_BASE_URL,
+    'localhost:3000',
 ]
 
 ROOT_URLCONF = 'config.urls'
