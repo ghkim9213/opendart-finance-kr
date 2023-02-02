@@ -185,6 +185,8 @@ class StockPrice(models.Model):
     date = models.DateField()
     records = models.JSONField()
     is_monthend = models.IntegerField()
+    file = models.CharField(max_length=100)
+    url = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
