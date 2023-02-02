@@ -52,7 +52,7 @@ class VariableClient:
             'address': var.address,
             'label_en': var.label_en,
             'label_kr': var.label_kr,
-            'download_url': var.url.split('?')[0],
+            'download_url': var.url,
         }
 
 
@@ -115,7 +115,7 @@ class FactorGroupClient:
                 'quantiles': factor['quantiles'],
                 'labels': factor['labels'],
             } for factor in group.factors],
-            'download_url': group.url.split('?')[0],
+            'download_url': group.url,
         }
 
     def find_portfolio_by_label(self, group_id, label, to_dict=False):
