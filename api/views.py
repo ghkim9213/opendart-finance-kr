@@ -209,4 +209,22 @@ class FactorGroupPortfolioPerformance(APIView):
         return Response(data, status=status)
 
 
-        # pf = g
+class StockPriceList(APIView):
+    config = c.STOCK_PRICE_LIST
+    model = apps.get_model('marketdata', 'StockPrice')
+    MIN_DATE = datetime.date(year=2022, month=12, day=29)
+
+    def get(self, request, format=None):
+        records = self.model.objects.filter(date__gte=self.MIN_DATE).values('date', 'url')
+        for r in records:
+            r['date'] = r['date'].strftime('%Y%m%d')
+            r['download_url'] = r.pop('url')
+        # s = StockPriceSerializer(qs, many=True)
+        _status = find_status(self.config, 200)
+        status = encode_status(_status)
+
+        data = {
+            'status': _status,
+            'data': records
+        }
+        return Response(data, status=status)

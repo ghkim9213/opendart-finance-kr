@@ -1,6 +1,9 @@
 from django.apps import apps
 from itertools import product
+from io import BytesIO
 import datetime
+import requests
+import zipfile
 
 class VariableClient:
     account_ratio = apps.get_model('marketdata', 'AccountRatio')

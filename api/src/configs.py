@@ -10,6 +10,11 @@ STATUS_NO_CONTENT = {
     'description': 'no content',
 }
 
+STATUS_BAD_REQUEST = {
+    'code': 400,
+    'description': 'bad reqeust',
+}
+
 README = {
     'url': 'readme.md',
     'view_name': 'Readme',
@@ -71,6 +76,12 @@ FACTOR_GROUP_PORTFOLIO_PERFORMANCE = {
     ]
 }
 
+STOCK_PRICE_LIST = {
+    'url': 'stock-price/list',
+    'view_name': 'StockPriceList',
+    'status': [STATUS_OK]
+}
+
 LIST = [
     README,
     API_DOC,
@@ -79,5 +90,6 @@ LIST = [
     VARIABLE_TIME_SERIES,
     FACTOR_GROUP_LIST,
     FACTOR_GROUP_PORTFOLIO_LIST,
-    FACTOR_GROUP_PORTFOLIO_PERFORMANCE
+    FACTOR_GROUP_PORTFOLIO_PERFORMANCE,
+    STOCK_PRICE_LIST,
 ]

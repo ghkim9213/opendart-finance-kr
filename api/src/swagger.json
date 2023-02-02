@@ -8,7 +8,7 @@
     "contact": {
       "email": "gkim9213@gmail.com"
     },
-    "license" : {
+    "license": {
       "name": "License",
       "url": "http://license.io"
     }
@@ -17,8 +17,12 @@
   "basePath": "/",
   "tags": [
     {
+      "name": "stock price",
+      "description": "일별 가격 횡단면 데이터 조회"
+    },
+    {
       "name": "variable",
-      "description": "월별 (분기별) 주요지표 데이터",
+      "description": "월별 (분기별) 주요지표 데이터 조회",
       "externalDocs": {
         "description": "데이터셋 다운로드",
         "url": "http://www.opendata-finance-kr.com/datasets/"
@@ -37,13 +41,50 @@
     "http"
   ],
   "paths": {
+    "/stock-price/list": {
+      "get": {
+        "tags": [
+          "stock price"
+        ],
+        "summary": "일별 가격 횡단면 데이터 csv 파일 목록 조회",
+        "description": "다운로드 가능한 일별 가격 횡단면 데이터 csv 파일목록을 조회합니다.",
+        "operationId": "listStockPrices",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "date": {
+                    "type": "string",
+                    "example": "20221229"
+                  },
+                  "download_url": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/variable/list": {
       "get": {
-        "tags": ["variable"],
+        "tags": [
+          "variable"
+        ],
         "summary": "주요지표목록 조회 ",
         "description": "요청 가능한 주요지표들의 목록을 조회합니다.",
         "operationId": "listVariables",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "ok",
@@ -59,19 +100,22 @@
     },
     "/variable/{model_name}/{id}/cross-section/{yyyymm}": {
       "get": {
-        "tags": ["variable"],
+        "tags": [
+          "variable"
+        ],
         "summary": "주요지표 횡단면 데이터 조회",
         "description": "기준년월 말일로부터 최대 3개월 이내에 관측된 주요지표의 기업별 횡단면 데이터를 조회합니다.",
         "operationId": "crossSectionVariable",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "model_name",
             "in": "path",
             "description": "주요지표 클래스를 지칭하는 요청인자입니다. 주요지표목록 응답결과 address의 model_name에 해당합니다.",
             "required": true,
-            "type": "string",
-            "example": "AccountRatio"
+            "type": "string"
           },
           {
             "name": "id",
@@ -79,23 +123,21 @@
             "description": "주요지표 클래스 내 해당 주요지표의 고유번호입니다. 주요지표목록 응답결과 address의 id에 해당합니다.",
             "required": true,
             "type": "integer",
-            "format": "int64",
-            "example": 11
+            "format": "int64"
           },
           {
             "name": "yyyymm",
             "in": "path",
             "description": "조회 기준년월입니다. 기준년월 말일로부터 최대 3개월 이내에 관측된 기업별 주요지표를 조회합니다.",
             "required": true,
-            "type": "string",
-            "example": "202209"
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "ok",
             "schema": {
-                "$ref": "#/definitions/VariableRecords"
+              "$ref": "#/definitions/VariableRecords"
             }
           },
           "204": {
@@ -106,19 +148,22 @@
     },
     "/variable/{model_name}/{id}/time-series/{stock_code}": {
       "get": {
-        "tags": ["variable"],
+        "tags": [
+          "variable"
+        ],
         "summary": "종목별 주요지표 시계열 조회",
         "description": "주요지표의 종목별 시계열 데이터를 조회합니다",
         "operationId": "timeSeriesVariable",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "model_name",
             "in": "path",
             "description": "주요지표 클래스를 지칭하는 요청인자입니다. 주요지표목록 응답결과 address의 model_name에 해당합니다.",
             "required": true,
-            "type": "string",
-            "example": "AccountRatio"
+            "type": "string"
           },
           {
             "name": "id",
@@ -126,23 +171,21 @@
             "description": "주요지표 클래스 내 해당 주요지표의 고유번호입니다. 주요지표목록 응답결과 address의 id에 해당합니다.",
             "required": true,
             "type": "integer",
-            "format": "int64",
-            "example": 11
+            "format": "int64"
           },
           {
             "name": "stock_code",
             "in": "path",
             "description": "6자리 종목코드",
             "required": true,
-            "type": "string",
-            "example": "005930"
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "ok",
             "schema": {
-                "$ref": "#/definitions/VariableRecords"
+              "$ref": "#/definitions/VariableRecords"
             }
           },
           "204": {
@@ -153,11 +196,15 @@
     },
     "/factor-group/list": {
       "get": {
-        "tags": ["factor portfolio"],
+        "tags": [
+          "factor portfolio"
+        ],
         "summary": "요인 포트폴리오 구성기준 목록 조회",
         "description": "요인 포트포트폴리오 구성기준들의 목록을 조회합니다.",
         "operationId": "listFactorGroup",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "ok",
@@ -173,11 +220,15 @@
     },
     "/factor-group/{group_id}/portfolio/list": {
       "get": {
-        "tags": ["factor portfolio"],
+        "tags": [
+          "factor portfolio"
+        ],
         "summary": "요인 포트폴리오 목록 조회",
         "description": "요인 기준에 따라 구성된 포트폴리오 목록 및 포트폴리오별 구성종목을 조회합니다.",
         "operationId": "listFactorPortfolios",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "group_id",
@@ -185,8 +236,7 @@
             "description": "요인 포트폴리오 구성기준의 고유번호입니다. 요인 포트폴리오 구성기준 목록 조회 응답결과 address의 group_id에 해당합니다.",
             "required": true,
             "type": "integer",
-            "format": "int64",
-            "example": 12
+            "format": "int64"
           }
         ],
         "responses": {
@@ -201,11 +251,15 @@
     },
     "/factor-group/{group_id}/portfolio/{portfolio_label}/performance": {
       "get": {
-        "tags": ["factor portfolio"],
+        "tags": [
+          "factor portfolio"
+        ],
         "summary": "요인 포트폴리오 일별 수익률 조회",
         "description": "2022-12-29부터 현재까지 요인 포트폴리오의 일별 수익률을 조회합니다.",
         "operationId": "performanceByPortfolio",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "group_id",
@@ -213,16 +267,14 @@
             "description": "요인 포트폴리오 구성기준의 고유번호입니다. 요인 포트폴리오 구성기준 목록 조회 응답결과 address의 group_id에 해당합니다.",
             "required": true,
             "type": "integer",
-            "format": "int64",
-            "example": 12
+            "format": "int64"
           },
           {
             "name": "portfolio_label",
             "in": "path",
             "description": "요인 포트폴리오의 고유 label입니다. 요인 포트폴리오 목록 조회 응답결과 portfolios의 각 항목 label에 해당합니다.",
             "required": true,
-            "type": "string",
-            "example": "small_value"
+            "type": "string"
           }
         ],
         "responses": {
@@ -241,16 +293,19 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "example": "book_to_market"
         },
         "address": {
           "$ref": "#/definitions/VariableAddress"
         },
         "label_en": {
-          "type": "string"
+          "type": "string",
+          "example": "book to market"
         },
         "label_kr": {
-          "type": "string"
+          "type": "string",
+          "example": "장부가치 (시가총액대비)"
         },
         "download_url": {
           "type": "string"
@@ -261,11 +316,13 @@
       "type": "object",
       "properties": {
         "model_name": {
-          "type": "string"
+          "type": "string",
+          "example": "PriceRatio"
         },
         "id": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "example": 19
         }
       }
     },
@@ -294,10 +351,12 @@
           "format": "float"
         },
         "market": {
-          "type": "string"
+          "type": "string",
+          "example": "KOSPI"
         },
         "stock_code": {
-          "type": "string"
+          "type": "string",
+          "example": "005930"
         }
       }
     },
@@ -309,10 +368,17 @@
         },
         "lookback": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "example": 6
         },
         "quantiles": {
           "type": "array",
+          "example": [
+            0,
+            0.3,
+            0.7,
+            1
+          ],
           "items": {
             "type": "number",
             "format": "float"
@@ -320,6 +386,11 @@
         },
         "labels": {
           "type": "array",
+          "example": [
+            "bottom",
+            "middle",
+            "top"
+          ],
           "items": {
             "type": "string"
           }
@@ -330,14 +401,16 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "example": "BookToMarket"
         },
         "address": {
           "type": "object",
           "properties": {
             "group_id": {
               "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "example": 7
             }
           }
         },
@@ -346,7 +419,8 @@
           "format": "int64"
         },
         "last_rebalance": {
-          "type": "string"
+          "type": "string",
+          "example": "20220630"
         },
         "factors": {
           "type": "array",
