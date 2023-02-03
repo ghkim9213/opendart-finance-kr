@@ -218,8 +218,9 @@ class StockPriceList(APIView):
         records = self.model.objects.filter(date__gte=self.MIN_DATE).values('date', 'url')
         for r in records:
             r['date'] = r['date'].strftime('%Y%m%d')
-            r['download_url'] = r.pop('url')
-        # s = StockPriceSerializer(qs, many=True)
+            url = r.pop('url')
+            r['download_url'] = url.replace('s3.ap-northeast-2', 's3-accelerate')
+            # r['download_url'] = r.pop('url')
         _status = find_status(self.config, 200)
         status = encode_status(_status)
 
