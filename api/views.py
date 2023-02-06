@@ -20,7 +20,7 @@ class Readme(APIView):
 
 class Readme4Client(APIView):
     def get(self, request, format=None):
-        with open('./src/readme4client.md') as f:
+        with open('./api/src/readme4client.md') as f:
             return Response(f.read())
 
 
