@@ -190,7 +190,7 @@ logic2 = screener.get_logic(id=2) # will give the logic of market_quity created 
 print(logic1, logic2)
 ```
 
-#### execute ordered (sequential) screening
+##### executing ordered (sequential) screening
 
 등록된 기준의 순서에 따라 순차적 스크리닝을 실행합니다.
 ```python
@@ -198,7 +198,7 @@ screener.execute(ordered=True)
 print(screener.result)
 ```
 
-#### reordering logics by auto-generated id
+##### reordering logics by auto-generated id
 
 다음과 같이 자동 생성된 id를 이용해 기준의 순서를 재정렬하여 순차적 스크리닝을 실행할 수 있습니다.
 ```python
@@ -210,7 +210,7 @@ screener.execute(ordered=True)
 print(screener.result)
 ```
 
-#### execute unordered screening
+##### executing unordered screening
 
 등록된 기준들을 이용해 비순차적 스크리닝을 실행합니다.
 ```python
@@ -225,7 +225,7 @@ print(screener.result)
 print(screener.dataframe)
 ```
 
-#### resetting the screener
+##### resetting the screener
 
 등록된 모든 스크리닝 기준과 결과를 지웁니다.
 ```python
