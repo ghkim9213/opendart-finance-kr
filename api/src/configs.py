@@ -21,6 +21,11 @@ README = {
     'status': [STATUS_OK]
 }
 
+README4CLIENT = {
+    'url': 'readme4client.md',
+    'view_name': 'Readme4Client',
+    'status': [STATUS_OK]
+}
 
 API_DOC = {
     'url': 'swagger.json',
@@ -84,6 +89,7 @@ STOCK_PRICE_LIST = {
 
 LIST = [
     README,
+    README4CLIENT,
     API_DOC,
     VARIABLE_LIST,
     VARIABLE_CROSS_SECTION,

@@ -17,6 +17,13 @@ class Readme(APIView):
         with open('./README.md') as f:
             return Response(f.read())
 
+
+class Readme4Client(APIView):
+    def get(self, request, format=None):
+        with open('./src/readme4client.md') as f:
+            return Response(f.read())
+
+
 class ApiDoc(APIView):
     def get(self, request, format=None):
         with open('./api/src/swagger.json') as f:
